@@ -2,7 +2,7 @@
 % Title page for Ph.D. thesis at the University of Stuttgart.
 
 \RequirePackage{hyperref}
-\RequirePackage{graphicx}
+\RequirePackage{geometry}
 \RequirePackage{xspace}
 
 \@ifundefined{bhrule}{
@@ -12,7 +12,7 @@
 
 \newcommand{\TBlabel}[1]{\textbf{#1}\hfil}
 \newenvironment{TBlist}{%
-  \list{}{\labelwidth 35mm \leftmargin 60mm % alt: 35/60 mm
+  \list{}{\labelwidth 35mm \leftmargin 45mm % alt: 35/60 mm
           \rightmargin 10mm \let\makelabel\TBlabel}%
 }{\endlist}
 
@@ -46,40 +46,42 @@
   %hypersetup{pdfkeywords=\@keywords}
   \thispagestyle{empty}
   \begin{titlepage}
+    % More margin for title page. Uses package 'geometry'.
+    \newgeometry{margin=3.7cm,top=5cm}
     \let\footnotesize\small
     \let\footnoterule\relax
     \let \footnote \thanks
     \setcounter{footnote}{0}
-    %\null\vfil
-    %\vskip 60\p@
+    \null\vfil
+    % \vskip 60\p@
     \begin{center}
       \setlength{\parskip}{0pt}
-      \includegraphics[width=6cm]{ustutt-logo}
-      \vfill
       {\LARGE \bf \@title \par}
-      \vspace{40pt}
+      \vspace{80pt}
       {Von der \@faculty der \@university
        zur Erlangung der W\"urde eines Doktors der
        Naturwissenschaften (Dr.~rer.~nat.) genehmigte Abhandlung \par}
       %\bigskip
-      \vspace{40pt}
-      {Vorgelegt von \par}
-      {\large \@author \par}
-      {aus \@placeofbirth \par}
-      \vspace{40pt}
+      \vspace{80pt}
+      {Vorgelegt von {\large\par}}\medskip
+      {\large \@author\par}\medskip
+      {aus \@placeofbirth {\large\par}}
+      \vspace{60pt}
       \begin{TBlist}%
         \item[Hauptberichter:]\@firstexaminer
         \item[Mitberichter:]\@secondexaminer
         \item[Tag der m\"undlichen Pr\"ufung:]\@dateofexamination
       \end{TBlist}%
-      \vspace{40pt}
-      {\@department \par}
       \vspace{60pt}
+      \vfil
+      {\@department \par}
+      \vspace{10pt}
       {\@date \par}
     \end{center}
     \par
     \@thanks
-    \vfil\null
+    %\vfil\null
+    \restoregeometry
   \end{titlepage}
   \setcounter{footnote}{0}
   \global\let\thanks\relax
